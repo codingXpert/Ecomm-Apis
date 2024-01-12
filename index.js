@@ -6,6 +6,7 @@ const db = require('./config/mongoose');
 
 
 app.use(express.json());
+app.use('/api', require('./routes'))
 
 app.listen(PORT, (err) => {
     if(err){
