@@ -21,21 +21,8 @@ exports.createProduct = async (req, res) => {
 
 //get product
 exports.getProducts = async (req, res) => {
-  try {
-    const query = req.query;
-    console.log(query);
-    let products;
-    if (!query) {
-      products = await Product.find();
-    } else {
-      products = await Product.find({
-        $or: [
-          { name: { $regex: query.name, $options: "i" } },
-          { description: { $regex: query.description, $options: "i" } },
-          { "variants.name": { $regex: query, $options: "i" } },
-        ],
-      });
-    }
+  try { 
+    const  products = await Product.find(); 
     res.status(200).json({ status: "success", products });
   } catch (error) {
     res.status(500).json({ status: "failed", error: error.message });
@@ -57,13 +44,11 @@ exports.updateProduct = async (req, res) => {
           .status(404)
           .json({ status: "failed", error: "Product not found" });
       }
-      res
-        .status(200)
-        .json({
-          status: "success",
-          message: "Product updated successfully",
-          updateProduct,
-        });
+      res.status(200).json({
+        status: "success",
+        message: "Product updated successfully",
+        updateProduct,
+      });
     } else {
       res
         .status(400)
@@ -87,6 +72,31 @@ exports.deleteProduct = async (req, res) => {
     res
       .status(200)
       .json({ status: "success", message: "Product deleted successfully" });
+  } catch (error) {
+    res.status(500).json({ status: "failed", error: error.message });
+  }
+};
+
+// Search Products
+exports.searchProduct = async (req, res) => {
+  try {
+    const query = req.query;
+    console.log(query);
+    let products;
+    if (!query) {
+      res
+        .status(400)
+        .json({ status: "failed", message: "Enter the searching string" });
+    } else {
+      products = await Product.find({
+        $or: [
+          { name: { $regex: query.name, $options: "i" } },
+          { description: { $regex: query.description, $options: "i" } },
+          { "variants.name": { $regex: query, $options: "i" } },
+        ],
+      });
+    }
+    res.status(200).json({ status: "success", products });
   } catch (error) {
     res.status(500).json({ status: "failed", error: error.message });
   }
