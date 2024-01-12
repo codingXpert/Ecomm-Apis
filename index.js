@@ -5,6 +5,7 @@ const app = express();
 const db = require('./config/mongoose');
 
 
+app.use(express.json());
 
 app.listen(PORT, (err) => {
     if(err){
