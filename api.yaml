@@ -1,0 +1,236 @@
+swagger: "2.0"
+tags:
+  - name: Product
+info:
+  title: E-commerce API
+  description: >
+    E-commerce API is a Node.js-based RESTful API for managing products and variants in an e-commerce system.
+    It provides functionalities such as product creation, updating, deletion, and searching.
+  version: 1.0
+  contact:
+    email: example@gmail.com
+  license:
+    name: License
+    url: "http://license.org/"
+servers:
+  - url: "http://localhost:8000"
+    description: Local server
+  - url: "https://codeial-gu73.onrender.com"
+    description: Cloud server
+schemes:
+  - https
+  - http
+
+# APIs
+paths:
+  # Create Product
+  /api/product/create:
+    post:
+      tags: [Product]
+      summary: "Create a Product"
+      description: "Pass the product and variants details to create a product."
+
+      # Request Body
+      produces:
+        - application/json
+      consumes:
+        - application/json
+      parameters:
+        - in: body
+          name: CreateProducts
+          description: "Details Of created products"
+          schema:
+            type: object
+            properties:
+              name:
+                type: string
+              description:
+                type: string
+              price:
+                type: number
+              variants:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                    sku:
+                      type: string
+                    additional_cost:
+                      type: number
+                    stock_count:
+                      type: integer
+                example:
+                  - name: "S10+"
+                    sku: "TYER1256U"
+                    additional_cost: 1000
+                    stock_count: 100
+            example:
+              name: "samsung"
+              description: "This is an Android phone"
+              price: 123
+              variants:
+                - name: "S10+"
+                  sku: "TYER1256U"
+                  additional_cost: 1000
+                  stock_count: 100
+      #Response Body
+      responses:
+        201:
+          description: Created
+          schema:
+            type: object
+            properties: #Defining the type of each properties of an object
+              status:
+                type: string
+              message:
+                type: string
+              product:
+                type: object
+            example:
+              status: success
+              message: Product Created Successfully
+              product:
+                {
+                  name: samsung,
+                  description: This is an android phone,
+                  price: 1000,
+                  variants:
+                    [
+                      {
+                        name: S10+,
+                        sku: 39hios,
+                        additional_cost: 1000,
+                        stock_count: 100,
+                      },
+                    ],
+                }
+        500:
+          description: Internal Server Error
+          schema:
+            type: object
+            example:
+              status: failed
+              message: failed to create product
+
+  # Get Products
+  /api/product/get:
+    get:
+      tags: [Product]
+      summary: "Fetch All Products"
+      description: "Hit the request to get all the available products."
+      responses:
+        200:
+          description: Fetched All Products
+          schema:
+            type: object
+            properties: #Defining the type of each properties of an object
+              status:
+                type: string
+              message:
+                type: string
+              products:
+                type: array
+            example:
+              status: success
+              message: Products Fetched Successfully
+              products:
+                [
+                  {
+                    _id: 65a100b0f0195e597357ccf4,
+                    name: samsung,
+                    description: This is an android phone,
+                    price: 1000,
+                    variants:
+                      [
+                        {
+                          name: S10+,
+                          sku: 39hios,
+                          additional_cost: 1000,
+                          stock_count: 100,
+                          _id: 65a100b0f0195e597357ccf5,
+                        },
+                      ],
+                  },
+                  {
+                    _id: 65a10e5da6fbd627cb9e1e28,
+                    name: nokia,
+                    description: This is an android phone,
+                    price: 15000,
+                    variants:
+                      [
+                        {
+                          name: E6,
+                          sku: UXY10T,
+                          additional_cost: 2000,
+                          stock_count: 46,
+                          _id: 65a10e5da6fbd627cb9e1e29,
+                        },
+                      ],
+                  },
+                ]
+
+        500:
+          description: Internal Server Error
+          schema:
+            type: object
+            example:
+              status: failed
+              error: failed to create product
+
+  # Update Product
+  /api/product/update:
+    put:
+      tags: [Product]
+      summary: "Update Product"
+      description: "Pass the productId in the params to update product/variants/both."
+
+      # Request Body
+      produces:
+        - application/json
+      consumes:
+        - application/json
+      parameters:
+        - in: path
+          name: product_id
+          description: "ID of the product to update"
+          required: true
+          type: string
+          example: "65a100b0f0195e597357ccf4"
+
+        - in: body
+          name: Product Details
+          description: "Enter the product/variants/both data"
+          required: true
+          schema:
+            type: object
+            properties:
+              name:
+                type: string
+              description:
+                type: string
+              price:
+                type: number
+              variants:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                    sku:
+                      type: string
+                    additional_cost:
+                      type: number
+                    stock_count:
+                      type: integer
+            example:
+              name: "Samsung"
+              description: "This is an updated Android phone"
+              price: 15000
+              variants:
+                - name: "S20+"
+                  sku: "UPDATEDSKU123"
+                  additional_cost: 1200
+                  stock_count: 200
