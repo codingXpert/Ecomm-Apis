@@ -385,8 +385,6 @@ paths:
                 type: string
               products:
                 type: array
-                # items:
-                #   $ref: "#/definitions/Product"
             example:
               status: success
               products:
@@ -410,27 +408,4 @@ paths:
               status: failed
               error: "Some error message"
 
-          definitions:
-            Product:
-              type: object
-              properties:
-                name:
-                type: string
-              description:
-                type: string
-              variants:
-                type: array
-                # items:
-                # $ref: "#/definitions/Variant"
-          Variant:
-            type: object
-            properties:
-              name:
-                type: string
-              sku:
-                type: string
-              additional_cost:
-                type: number
-              stock_count:
-                type: integer
                               
