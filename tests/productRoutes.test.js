@@ -1,7 +1,8 @@
 // tests/routes/product.test.js
 
 const request = require('supertest');
-const app = require('../../app');
+const express = require('express')
+const app = express();
 const mongoose = require('mongoose');
 
 describe('Product Endpoints', () => {
@@ -17,7 +18,7 @@ describe('Product Endpoints', () => {
         variants: [{ name: 'Test Variant', sku: 'TEST123', additional_cost: 5, stock_count: 20 }],
       });
 
-    productId = createProductRes.body.product._id;
+    productId = createProductRes.body.product.id;
   });
 
   afterAll(async () => {
@@ -57,7 +58,7 @@ describe('Product Endpoints', () => {
     expect(getProductRes.statusCode).toEqual(200);
     expect(getProductRes.body.status).toBe('success');
     expect(getProductRes.body.product).toBeDefined();
-    expect(getProductRes.body.product._id).toBe(productId);
+    expect(getProductRes.body.product.id).toBe(productId);
   });
 
   it('should search products by name', async () => {

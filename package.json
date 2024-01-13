@@ -6,14 +6,7 @@
   "scripts": {
     "start:prod": "cross-env NODE_ENV=production  node index.js",
     "start:dev": "cross-env NODE_ENV=development  nodemon index.js",
-    "test": "jest",
-    "test:unit": "jest --testPathPattern=tests/unit",
-    "test:integration": "jest --testPathPattern=tests/integration",
-    "test:all": "jest --testPathPattern=tests",
-    "test:coverage": "jest --coverage",
-    "test:watch": "jest --watch",
-    "test:watchAll": "jest --watchAll",
-    "test:ci": "jest --runInBand --coverage"
+    "test": "jest"
   },
   "keywords": [],
   "author": "",

@@ -5,7 +5,7 @@ const connectDB = async () => {
     let dbUrl;
     if (process.env.NODE_ENV === "development") {
       dbUrl = process.env.DEV_DB;
-    } else if (process.env.NODE_ENV === "development") {
+    } else if (process.env.NODE_ENV === "production") {
       dbUrl = process.env.PROD_DB;
     } else {
       throw new Error("Environment Not Set Properly");
