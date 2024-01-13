@@ -71,15 +71,15 @@ To get started with this project, follow these steps:
 * **Create Product:** ```https://ecomm-apis-639j.onrender.com//api/product/create```
 * **Get Products:** ```https://ecomm-apis-639j.onrender.com//api/product/get```
 * **Search Products:** ```https://ecomm-apis-639j.onrender.com//api/product/search```
-* **Update Product:** ```https://ecomm-apis-639j.onrender.com//api/product/update```
-* **Delete Product:** ```https://ecomm-apis-639j.onrender.com//api/product/Delete```
+* **Update Product:** ```https://ecomm-apis-639j.onrender.com//api/product/update/{ productId}```
+* **Delete Product:** ```https://ecomm-apis-639j.onrender.com//api/product/Delete/{productId}```
 
 ## APIS(Accessible_While_Development)
 * **Create Product:** ```http://localhost:8000/api/product/creater```
 * **Get Products:** ```http://localhost:8000/api/product/get```
 * **Search Products:** ```http://localhost:8000/api/product/search```
-* **Update Product:** ```http://localhost:8000/api/product/updat```
-* **Delete Product:** ```http://localhost:8000/api/product/Delete```
+* **Update Product:** ```http://localhost:8000/api/product/update/:productId```
+* **Delete Product:** ```http://localhost:8000/api/product/Delete/:productId```
 
 ## Description_Of_The_Routes
 * **Create Product:-** While Creating a product the variants[] is optional.
