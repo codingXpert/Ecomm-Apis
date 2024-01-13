@@ -1,8 +1,5 @@
 # E-commerce API
 
-![download (13)](https://github.com/codingXpert/Ecomm-Apis/assets/101451924/7d68c462-fa35-4236-93f9-43ef72c5b6e1)
-
-
 ## Description
 
 E-commerce API is a Node.js-based RESTful API for managing products and variants in an e-commerce system. It provides functionalities such as product creation, updating, deletion, and searching.
