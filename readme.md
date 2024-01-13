@@ -76,7 +76,7 @@ To get started with this project, follow these steps:
 * **Update Product:** ```https://ecomm-apis-639j.onrender.com//api/product/update```
 * **Delete Product:** ```https://ecomm-apis-639j.onrender.com//api/product/Delete```
 
-## APIS(Accessible While Development)
+## APIs(Accessible While Development)
 * **Create Product:** ```http://localhost:8000/api/product/creater```
 * **Get Products:** ```http://localhost:8000/api/product/get```
 * **Search Products:** ```http://localhost:8000/api/product/search```
