@@ -17,7 +17,7 @@ E-commerce API is a Node.js-based RESTful API for managing products and variants
 - [Installation](#installation)
 - [Usage](#usage)
 - [Features](#Features)
-- [Apis](#APIS)
+- [Apis](#APIS(Accessible_While_Development))
 - [Description Of The Routes](#Description_Of_The_Routes)
 - [Swagger Documentation](#Swagger_Documentation)
 - [Deployed Link](#Deployed_Link)
@@ -59,7 +59,7 @@ To get started with this project, follow these steps:
     ```bash
     npm run start:prod
 
-* * To run the test command:
+* To run the test command:
     ```bash
     npm run test    
     
@@ -69,14 +69,14 @@ To get started with this project, follow these steps:
 - Manage product variants with names, SKUs, additional costs, and stock counts
 - Search products by name, description, or variant name.
 
-## APIS(Accessible While Production)
+## APIS(Accessible_While_Production)
 * **Create Product:** ```https://ecomm-apis-639j.onrender.com//api/product/create```
 * **Get Products:** ```https://ecomm-apis-639j.onrender.com//api/product/get```
 * **Search Products:** ```https://ecomm-apis-639j.onrender.com//api/product/search```
 * **Update Product:** ```https://ecomm-apis-639j.onrender.com//api/product/update```
 * **Delete Product:** ```https://ecomm-apis-639j.onrender.com//api/product/Delete```
 
-## APIs(Accessible While Development)
+## APIS(Accessible_While_Development)
 * **Create Product:** ```http://localhost:8000/api/product/creater```
 * **Get Products:** ```http://localhost:8000/api/product/get```
 * **Search Products:** ```http://localhost:8000/api/product/search```
