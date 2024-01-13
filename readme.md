@@ -1,6 +1,7 @@
 # E-commerce API
 
-![Project Banner](path/to/your/banner.png)
+![Project Banner](![download (12)](https://github.com/codingXpert/Ecomm-Apis/assets/101451924/ed5c8700-3915-442a-ab8b-42edb81a0b12)
+)
 
 ## Description
 
