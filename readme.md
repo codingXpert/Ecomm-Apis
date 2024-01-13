@@ -16,10 +16,10 @@ E-commerce API is a Node.js-based RESTful API for managing products and variants
 
 - [Installation](#installation)
 - [Usage](#usage)
-- [Documentation](#documentation)
 - [Features](#Features)
-- [Apis](#Apis)
-- [Postman Documentation](#postman_Documentation)
+- [Apis](#APIs)
+- [Description Of The Routes](#Description_Of_The_Routes)
+- [Swagger Documentation](#Swagger_Documentation)
 - [Deployed Link](#Deployed_Link)
 
 ## Getting Started
@@ -31,7 +31,7 @@ To get started with this project, follow these steps:
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/codingXpert/Ecomm-Api
+   git clone https://github.com/codingXpert/Ecomm-Apis
 
 2. Navigate to the project directory:
    ```bash
@@ -58,6 +58,10 @@ To get started with this project, follow these steps:
 * To run the project in production mode:
     ```bash
     npm run start:prod
+
+* * To run the test command:
+    ```bash
+    npm run test    
     
 ## Features
 
@@ -66,11 +70,11 @@ To get started with this project, follow these steps:
 - Search products by name, description, or variant name.
 
 ## APIS(Accessible While Production)
-* **Create Product:** ```https://url-shortener-rfpt.onrender.com/api/product/create```
-* **Get Products:** ```https://url-shortener-rfpt.onrender.com/api/product/get```
-* **Search Products:** ```https://url-shortener-rfpt.onrender.com/api/product/search```
-* **Update Product:** ```https://url-shortener-rfpt.onrender.com/api/product/update```
-* **Delete Product:** ```https://url-shortener-rfpt.onrender.com/api/product/Delete```
+* **Create Product:** ```https://ecomm-apis-639j.onrender.com//api/product/create```
+* **Get Products:** ```https://ecomm-apis-639j.onrender.com//api/product/get```
+* **Search Products:** ```https://ecomm-apis-639j.onrender.com//api/product/search```
+* **Update Product:** ```https://ecomm-apis-639j.onrender.com//api/product/update```
+* **Delete Product:** ```https://ecomm-apis-639j.onrender.com//api/product/Delete```
 
 ## APIS(Accessible While Development)
 * **Create Product:** ```http://localhost:8000/api/product/creater```
@@ -79,13 +83,89 @@ To get started with this project, follow these steps:
 * **Update Product:** ```http://localhost:8000/api/product/updat```
 * **Delete Product:** ```http://localhost:8000/api/product/Delete```
 
-### Postman_Documentation
+## Description_Of_The_Routes
+* **Create Product:-** While Creating a product the variants[] is optional.
+* If the variant is available create the product like this
+```javascript
+{
+  "name": "samsung",
+  "description": "This is an Android phone",
+  "price": 123,
+  "variants": [
+    {
+      "name": "S10+",
+      "sku": "TYER1256U",
+      "additional_cost": 1000,
+      "stock_count": 100
+    }
+  ]
+}
+```
+* if variants are not available while creating product(we can add variants latter by using update route) then create the product the like this:-
+```javascript
+{
+  "name": "samsung",
+  "description": "This is an Android phone",
+  "price": 123,
+}
+```
+
+* **Update Product:-** While Updating the product we can pass the the fields or we can just pass the single field which needs to be updated.
+
+* If all the fields need to updated then pass the data as follows:-
+```javascript
+{
+  "name": "samsung",
+  "description": "This is an Android phone",
+  "price": 123,
+  "variants": [
+    {
+      "name": "S10+",
+      "sku": "TYER1256U",
+      "additional_cost": 1000,
+      "stock_count": 100
+    }
+  ]
+}
+```
+
+* If only single field needs to be updated, then:-
+```javascript
+{
+  "name": "samsung",
+}
+```
+
+```javascript
+{
+  "name": "samsung",
+  "variants": [
+    {
+      "additional_cost": 1000,
+    }
+  ]
+}
+```
+
+```javascript
+{
+  "variants": [
+    {
+      "additional_cost": 1000,
+    }
+  ]
+}
+```
+
+
+
+### Swagger_Documentation
 ```bash
-    https://documenter.getpostman.com/view/20576167/2s9Ykrbzvk
+    https://ecomm-apis-639j.onrender.com/api-docs/
 ```
 
 ### Deployed_Link
 * **Access all the available APIs using Swagger-UI**
  ```bash
-    https://url-shortener-rfpt.onrender.com/api-docs/
+    https://ecomm-apis-639j.onrender.com/api-docs/
 ```
