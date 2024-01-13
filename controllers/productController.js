@@ -21,8 +21,8 @@ exports.createProduct = async (req, res) => {
 
 //get product
 exports.getProducts = async (req, res) => {
-  try { 
-    const  products = await Product.find(); 
+  try {
+    const products = await Product.find();
     res.status(200).json({ status: "success", products });
   } catch (error) {
     res.status(500).json({ status: "failed", error: error.message });
@@ -80,22 +80,29 @@ exports.deleteProduct = async (req, res) => {
 // Search Products
 exports.searchProduct = async (req, res) => {
   try {
-    const query = req.query;
-    console.log(query);
+    const { name, description, variantName } = req.query;
     let products;
-    if (!query) {
-      res
+    if (!name && !description && !variantName) {
+      return res
         .status(400)
         .json({ status: "failed", message: "Enter the searching string" });
-    } else {
-      products = await Product.find({
-        $or: [
-          { name: { $regex: query.name, $options: "i" } },
-          { description: { $regex: query.description, $options: "i" } },
-          { "variants.name": { $regex: query, $options: "i" } },
-        ],
+    }
+
+    const queryConditions = [];
+    if (name) {
+      queryConditions.push({ name: { $regex: name, $options: "i" } });
+    }
+    if (description) {
+      queryConditions.push({
+        description: { $regex: description, $options: "i" },
       });
     }
+    if (variantName) {
+      queryConditions.push({
+        "variants.name": { $regex: variantName, $options: "i" },
+      });
+    }
+    products = await Product.find({ $or: queryConditions });
     res.status(200).json({ status: "success", products });
   } catch (error) {
     res.status(500).json({ status: "failed", error: error.message });

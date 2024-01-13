@@ -368,7 +368,7 @@ paths:
           description: "Search by product description"
           required: false
           type: string
-        - name: variant.name
+        - name: variantName
           in: query
           description: "Search by variant name"
           required: false
@@ -407,5 +407,17 @@ paths:
             example:
               status: failed
               error: "Some error message"
+        400:
+          description: Bad Request
+          schema:
+            type: object
+            properties:
+              status:
+                type: string
+              message:
+                type: string
+            example:
+              status: failed
+              message: "Enter the searching string"      
 
                               
