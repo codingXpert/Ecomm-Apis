@@ -17,7 +17,7 @@ E-commerce API is a Node.js-based RESTful API for managing products and variants
 - [Installation](#installation)
 - [Usage](#usage)
 - [Features](#Features)
-- [Apis](#APIs)
+- [Apis](#APIS)
 - [Description Of The Routes](#Description_Of_The_Routes)
 - [Swagger Documentation](#Swagger_Documentation)
 - [Deployed Link](#Deployed_Link)
