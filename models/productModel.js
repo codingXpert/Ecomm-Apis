@@ -3,8 +3,8 @@ const mongoose = require('mongoose');
 const variantSchema = new mongoose.Schema({
     name: String,
     sku: String,
-    additionalCost: Number,
-    stockCount: Number
+    additional_cost: Number,
+    stock_count: Number
 });
 
 const productSchema = new mongoose.Schema({
